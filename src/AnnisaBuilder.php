@@ -232,6 +232,10 @@ abstract class AnnisaBuilder implements Form
 	public function setModel($model = null)
 	{  
 		$this->model = $model;
+		
+		if(isset($this->builder) && method_exists($this->builder, 'setModel')) {
+			$this->builder->setModel($model);
+		}
 
 		return $this;
 	}
